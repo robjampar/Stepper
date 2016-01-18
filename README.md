@@ -17,21 +17,22 @@ Stepper stepperX = Stepper((int[]){4, 2, 3, 4, 5}, (byte[]){4, B1010, B0110, B01
 The first element in each array arguments on construction should represent the number of elements in that array.
 eg "int pins[]{4, 2, 3, 4, 5}" means a motor is connected to 4 pins with pin numbers (2,3,4,5)
 
-
-## Ensure that run is called
-The run method must then be called somewhere within your loop() function
-```c
-void loop() {
-  stepperX.run();
-}
-```
-
-You can then call any of the step functions:
+Once a Stepper is constructed, you can call any of the step functions:
 
     step(int steps);
     rotate(float rotations);
     rotateByDegrees(float degrees);
     move(float distance);
+
+
+## Ensure that the run() method is called
+The run method must then be called from anywhere within your loop() function - Note if this is not called often enough, there may be problems with step timing.
+
+```c
+void loop() {
+  stepperX.run();
+}
+```
 
 ## Default Values
 |Argument|Default Value|
