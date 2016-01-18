@@ -1,7 +1,7 @@
 # Stepper
 Stepper motor library for arduino
 
-Setup a stepper motor with its constructor:
+Setup a stepper motor with its constructor (this should be done in setup()):
 
 ```c
 Stepper(int pins[], byte steps[], float stepsPerRotation, float rotationsPerMinute, float distancePerRotation, byte direction);
@@ -16,3 +16,33 @@ Stepper stepperX = Stepper((int[]){4, 2, 3, 4, 5}, (byte[]){4, B1010, B0110, B01
 ## Array Inputs
 The first element in each array arguments on construction should represent the number of elements in that array.
 eg "int pins[]{4, 2, 3, 4, 5}" means a motor is connected to 4 pins with pin numbers (2,3,4,5)
+
+
+## Call run
+The run method must then be called within the loop()
+```c
+void loop() {
+  stepperX.run();
+}
+```
+
+You can then call any of the step functions:
+
+    step(int steps);
+    rotate(float rotations);
+    rotateByDegrees(float degrees);
+    move(float distance);
+
+## Default Values
+|Argument|Default Value|
+| --- | --- |
+| pins      | N/A |
+| steps      | {8, B1000, B1100, B0100, B0110, B0010, B0011, B0001, B1001} |
+| stepsPerRotation | 4075.7728395 |
+| rotationsPerMinute | 12 |
+| distancePerRotation | 200 |
+| direction | CLOCKWISE |
+
+These defaults are designed for the 28BYJ-48 motor.
+
+
