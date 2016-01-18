@@ -18,8 +18,8 @@ The first element in each array arguments on construction should represent the n
 eg "int pins[]{4, 2, 3, 4, 5}" means a motor is connected to 4 pins with pin numbers (2,3,4,5)
 
 
-## Call run
-The run method must then be called within the loop()
+## Ensure that run is called
+The run method must then be called somewhere within your loop() function
 ```c
 void loop() {
   stepperX.run();
